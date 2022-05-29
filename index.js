@@ -94,6 +94,19 @@ async function run() {
             const booking = await bookingCollection.find().toArray();
             res.send(booking);
         });
+        //get total user or customer
+        app.get("/totalcoustomer", async (req, res) => {
+            const user = await userCollection.find().toArray();
+            res.send({ length: user.length });
+        });
+        app.get("/totalreview", async (req, res) => {
+            const user = await reviewCollection.find().toArray();
+            res.send({ length: user.length });
+        });
+        app.get("/totalproduct", async (req, res) => {
+            const user = await productCollection.find().toArray();
+            res.send({ length: user.length });
+        });
 
       
     } finally {
