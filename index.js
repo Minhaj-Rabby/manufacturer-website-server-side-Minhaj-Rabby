@@ -65,6 +65,14 @@ async function run() {
             res.send(result);
         });
 
+        //delete specific booking items
+        app.delete("/booking/:id", async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await bookingCollection.deleteOne(query);
+            res.send(result);
+        });
+
       
     } finally {
     }
