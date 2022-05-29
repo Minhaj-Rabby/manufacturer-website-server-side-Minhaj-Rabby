@@ -73,6 +73,12 @@ async function run() {
             res.send(result);
         });
 
+        //get all booking result
+        app.get("/bookings", async (req, res) => {
+            const booking = await bookingCollection.find().toArray();
+            res.send(booking);
+        });
+
       
     } finally {
     }
