@@ -16,3 +16,11 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1,
 });
+
+app.get("/", (req, res) => {
+    res.send("Hello from Server Side");
+});
+
+app.listen(port, () => {
+    console.log(`Server Side listening on port ${port}`);
+});
