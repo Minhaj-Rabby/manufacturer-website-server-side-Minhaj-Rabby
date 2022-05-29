@@ -35,6 +35,14 @@ async function run() {
         const userCollection = client.db("database").collection("userInfo");
         const reviewCollection = client.db("database").collection("reviews");
 
+        //post product data
+
+        app.post("/products", async (req, res) => {
+            const newProduct = req.body;
+            const result = await productCollection.insertOne(newProduct);
+            res.send({ result, success: true });
+        });
+
       
     } finally {
     }
