@@ -24,3 +24,19 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`Server Side listening on port ${port}`);
 });
+
+async function run() {
+    try {
+        await client.connect();
+        const productCollection = client
+            .db("database")
+            .collection("products");
+        const bookingCollection = client.db("database").collection("booking");
+        const userCollection = client.db("database").collection("userInfo");
+        const reviewCollection = client.db("database").collection("reviews");
+
+      
+    } finally {
+    }
+}
+run().catch(console.dir);
