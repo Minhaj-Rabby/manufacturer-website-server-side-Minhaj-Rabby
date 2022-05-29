@@ -108,6 +108,23 @@ async function run() {
             res.send({ length: user.length });
         });
 
+        //Get booking for specific email api
+        app.get("/booking", verifyJWT, async (req, res) => {
+            const booking = req.query;
+            const decodedEmail = req.decoded.email;
+            if (booking.email === decodedEmail) {
+                const query = {
+                    email: booking.email,
+                };
+                //console.log(booking);
+                const cursor = bookingCollection.find(query);
+                const result = await cursor.toArray();
+                res.send(result);
+            } else {
+                return res.status(403).send({ message: "forbidden access" });
+            }
+        });
+
       
     } finally {
     }
