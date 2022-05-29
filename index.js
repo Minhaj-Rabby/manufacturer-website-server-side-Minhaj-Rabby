@@ -42,6 +42,13 @@ async function run() {
             const result = await productCollection.insertOne(newProduct);
             res.send({ result, success: true });
         });
+        //get product data
+        app.get("/products", async (req, res) => {
+            const query = {};
+            const cursor = productCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result);
+        });
 
       
     } finally {
